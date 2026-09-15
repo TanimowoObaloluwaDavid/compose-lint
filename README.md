@@ -4,6 +4,12 @@
 
 ![Linter type](https://img.shields.io/badge/type-Linter-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
+## Watch it work
+
+<video src="demo/compose-lint-demo.mp4" width="100%" controls muted loop autoplay>
+  Your browser does not support HTML5 video — download <a href="demo/compose-lint-demo.mp4">compose-lint-demo.mp4</a>.
+</video>
+
 ## Features
 
 - **Port conflict detection** — two services publishing the same host port, including overlapping ranges (`8080-8090` vs `8085`). One-click fix rewrites to the next free port.
