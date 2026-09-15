@@ -6,9 +6,9 @@
 
 ## Watch it work
 
-<video src="demo/compose-lint-demo.mp4" width="100%" controls muted loop autoplay>
-  Your browser does not support HTML5 video — download <a href="demo/compose-lint-demo.mp4">compose-lint-demo.mp4</a>.
-</video>
+![Compose Lint demo — one-click fixes, 0 errors, confetti](demo/preview.gif)
+
+▶ Watch the [full 33-second video with sound](demo/compose-lint-demo.mp4)
 
 ## Features
 
