@@ -1,0 +1,94 @@
+{
+  "name": "compose-lint",
+  "displayName": "Compose Lint",
+  "description": "ESLint for Docker Compose. Inline diagnostics for port conflicts, circular depends_on, undefined env vars, and deprecated Compose options. 100% local.",
+  "version": "0.1.0",
+  "publisher": "compose-lint",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "docker",
+    "compose",
+    "lint",
+    "linter",
+    "docker-compose",
+    "yaml",
+    "devops"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/docker-compose*.{yml,yaml}",
+    "workspaceContains:**/compose*.{yml,yaml}",
+    "onLanguage:yaml",
+    "onCommand:composeLint.lint"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "composeLint.lint",
+        "title": "Compose Lint: Lint Current File"
+      },
+      {
+        "command": "composeLint.lintWorkspace",
+        "title": "Compose Lint: Lint All Compose Files"
+      }
+    ],
+    "configuration": {
+      "title": "Compose Lint",
+      "properties": {
+        "composeLint.envFileName": {
+          "type": "string",
+          "default": ".env",
+          "description": "Default environment file name to cross-validate ${VAR} references against."
+        },
+        "composeLint.checkEnvVars": {
+          "type": "boolean",
+          "default": true,
+          "description": "Warn about ${VAR} references that are not defined in the environment file, service environment, or machine environment."
+        },
+        "composeLint.checkDeprecated": {
+          "type": "boolean",
+          "default": true,
+          "description": "Warn about obsolete or legacy Compose options (version, links, log_driver, etc.)."
+        },
+        "composeLint.filePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/*compose*.yaml",
+            "**/*compose*.yml"
+          ],
+          "description": "Glob patterns of files treated as Compose files."
+        },
+        "composeLint.maxWarningsBeforeInfo": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum number of diagnostics reported per file before degrading severities."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test out/test/",
+    "package": "npm run compile && vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "yaml": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.75.0",
+    "@vscode/vsce": "^2.29.0",
+    "typescript": "^5.4.0"
+  }
+}
